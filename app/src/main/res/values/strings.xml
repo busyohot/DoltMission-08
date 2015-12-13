@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CalView</string>
+    <!--<string name="action_settings">Settings</string>-->
+    <string name="scinput">일정추가</string>
+    <string name="title_activity_dilog">dilog</string>
+
+</resources>

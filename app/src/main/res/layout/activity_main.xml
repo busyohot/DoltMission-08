@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.busyo.yeonho.calview.MainActivity"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/maxdate"
+        android:textSize="20dp"
+        android:layout_marginLeft="15dp"
+        android:textStyle="bold" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="◀"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:id="@+id/btpre"
+            android:layout_weight="0.1"
+            android:layout_gravity="left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="XXXX년 XX월"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:id="@+id/tvym"
+            android:layout_weight="0.8"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="#ffffff" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="▶"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:id="@+id/btnext"
+            android:layout_weight="0.1"
+            android:layout_gravity="right" />
+
+
+    </LinearLayout>
+
+
+
+
+
+<!-- 그리드 뷰는 android:numColumns 를 꼭 지정해야한다.
+     총 10개인데 4를 지정했다면 4개 뒤는 다음줄로 넘긴다 그래서 4,4,2 이렇게 배열된다 -->
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/gridview"
+        android:numColumns="7"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:background="#2a2cb9"
+        android:verticalSpacing="2dp"
+        android:horizontalSpacing="2dp"
+        android:padding="2dp"
+        />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listview"
+        android:gravity="center"
+        android:layout_gravity="center"
+
+        android:verticalSpacing="1dp"
+        android:horizontalSpacing="1dp"
+        android:padding="1dp"
+        android:background="#d2da97" />
+</LinearLayout>
