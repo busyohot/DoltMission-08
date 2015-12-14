@@ -68,7 +68,7 @@
         android:numColumns="7"
         android:gravity="center"
         android:layout_gravity="center"
-        android:background="#c4c5f8"
+        android:background="#ffffff"
         android:verticalSpacing="2dp"
         android:horizontalSpacing="2dp"
         android:padding="2dp"
