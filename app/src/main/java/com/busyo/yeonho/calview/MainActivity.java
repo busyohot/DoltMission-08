@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -383,7 +382,7 @@ public class MainActivity extends ActionBarActivity {
                 int j = 0;//초기값
 
                 for (int i = 0; i < arraydate.size(); i++) {
-                    Log.d("11111111",arraydate.get(i)+"__"+(curyear[0] + "" + mt + "" + dt));
+                    //Log.d("11111111",arraydate.get(i)+"__"+(curyear[0] + "" + mt + "" + dt));
                     if (arraydate.get(i).equals(curyear[0] + "" + mt + "" + dt)) {//선택한 날짜에 해당하는 자료가 array 에 있다면
                         j = 1;//j를 1로 바꾸어 주황색 및,굵은 글자를 나타낼수 있게 한다
                     }
@@ -432,7 +431,7 @@ public class MainActivity extends ActionBarActivity {
                     else{
                         zm=""+gdoitcmonth;
                     }
-                Log.d("00000000",((gdoitcyear+""+zm+""+zd).toString())+"__"+arraydate.get(a).toString());
+                //Log.d("00000000",((gdoitcyear+""+zm+""+zd).toString())+"__"+arraydate.get(a).toString());
                     if ((gdoitcyear+""+zm+""+zd).toString().equals(arraydate.get(a).toString())){//켈린더에 선택한 날짜에 해당하는 값이 array에 있으면
 
                         llistsc = arraydate.get(a);
@@ -472,6 +471,7 @@ public class MainActivity extends ActionBarActivity {
             listd(position);
             if (llistsc == null){
                 TextView ltextView = new TextView(lcontext);
+                ltextView.setVisibility(View.GONE);
                 return ltextView;
             }
             else{
