@@ -338,7 +338,7 @@ public class MainActivity extends ActionBarActivity {
 
             //그리드의 각 칸마다 보여준다
             TextView textView = new TextView(mcontext);
-            textView.setLayoutParams(new GridView.LayoutParams(100, 100));
+            textView.setLayoutParams(new GridView.LayoutParams(120, 100));
             textView.setGravity(Gravity.CENTER);
             textView.setBackgroundColor(Color.WHITE);
             if (YI[position] == 1){//일요일
