@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -88,7 +89,7 @@ public class MainActivity extends ActionBarActivity {
         btnext=(Button)findViewById(R.id.btnext);
         tvym=(TextView)findViewById(R.id.tvym);
         maxdate = (TextView)findViewById(R.id.maxdate);
-        maxdate.setText("오늘 날짜 : "+curyear[0]+"년 "+curmonth[0]+"월 "+ curdate[0]+"일");
+        maxdate.setText("오늘 날짜 : " + curyear[0] + "년 " + curmonth[0] + "월 " + curdate[0] + "일");
 
         //초기에는 현재의 년월 표시
         nowym();
@@ -98,7 +99,8 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 nowym();
-                gdadapter.notifyDataSetChanged();
+                gdadapter.notifyDataSetChanged();lsadapter.notifyDataSetChanged();
+
             }
         });
 
@@ -126,17 +128,31 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                int s=0;
-                int y=0;
-                gdadapter.date(position,s,y);
-                gdoitcdate  = ID[position];
-                gdoitcst    = ST[s];
+                int s = 0;
+                int y = 0;
+                gdadapter.date(position, s, y);
+                gdoitcdate = ID[position];
+                gdoitcst = ST[s];
                 gdoitcyear = curyear[0];
                 gdoitcmonth = curmonth[0];
-                maxdate.setText("선택 날짜 : " + gdoitcyear+"년 "+gdoitcmonth+"월 "+gdoitcdate+"일");
+                String dt;
+                if (ID[position].toString().length() == 1) {
+                    dt = "0" + ID[position].toString();
+                } else {
+                    dt = ID[position].toString();
+                }
+
+                String mt;
+                if (String.valueOf(curmonth[0]).length() == 1) {
+                    mt = "0" + String.valueOf(curmonth[0]);
+                } else {
+                    mt = String.valueOf(curmonth[0]);
+                }
+                maxdate.setText("선택 날짜 : " + gdoitcyear + "년 " + mt + "월 " + dt + "일");
                 lsadapter.notifyDataSetChanged();
             }
         });
+
         //리스트 아답터 변수를 생성한후 activity_main.xml의 리스트 뷰에 적용시킨다.
         listView = (ListView)findViewById(R.id.listview);
         lsadapter= new ListAdapter(this);
@@ -153,6 +169,7 @@ public class MainActivity extends ActionBarActivity {
         else if (String.valueOf(curmonth[0]).length() == 2){
             tvym.setText(curyear[0] +"년 "+ curmonth[0] +"월");
         }
+
     }
 
     //전월달력표시
@@ -322,11 +339,11 @@ public class MainActivity extends ActionBarActivity {
 
             //그리드의 각 칸마다 보여준다
             TextView textView = new TextView(mcontext);
-            textView.setLayoutParams(new GridView.LayoutParams(180, 160));
+            textView.setLayoutParams(new GridView.LayoutParams(100, 100));
             textView.setGravity(Gravity.CENTER);
             textView.setBackgroundColor(Color.WHITE);
             if (YI[position] == 1){//일요일
-                textView.setBackgroundColor(Color.argb(255, 255 , 188, 188)); //붉은계통으로
+                textView.setBackgroundColor(Color.argb(255, 255, 188, 188)); //붉은계통으로
             }
             else if (YI[position] == 7) {//토요일)
                 textView.setBackgroundColor(Color.argb(255, 200 , 236, 255));//푸른계통으로
@@ -353,7 +370,7 @@ public class MainActivity extends ActionBarActivity {
                 }
 
                 String mt;
-                if (ID[position].toString().length() == 1){
+                if (String.valueOf(curmonth[0]).length() == 1){
                     mt="0" + String.valueOf(curmonth[0]);
                 }
                 else{
@@ -366,6 +383,7 @@ public class MainActivity extends ActionBarActivity {
                 int j = 0;//초기값
 
                 for (int i = 0; i < arraydate.size(); i++) {
+                    Log.d("11111111",arraydate.get(i)+"__"+(curyear[0] + "" + mt + "" + dt));
                     if (arraydate.get(i).equals(curyear[0] + "" + mt + "" + dt)) {//선택한 날짜에 해당하는 자료가 array 에 있다면
                         j = 1;//j를 1로 바꾸어 주황색 및,굵은 글자를 나타낼수 있게 한다
                     }
@@ -414,7 +432,7 @@ public class MainActivity extends ActionBarActivity {
                     else{
                         zm=""+gdoitcmonth;
                     }
-
+                Log.d("00000000",((gdoitcyear+""+zm+""+zd).toString())+"__"+arraydate.get(a).toString());
                     if ((gdoitcyear+""+zm+""+zd).toString().equals(arraydate.get(a).toString())){//켈린더에 선택한 날짜에 해당하는 값이 array에 있으면
 
                         llistsc = arraydate.get(a);
@@ -488,9 +506,23 @@ public class MainActivity extends ActionBarActivity {
 
             // 액티비티를 띄워주도록 startActivityForResult() 메소드를 호출합니다.
             Intent dialintent = new Intent(getBaseContext(), dialog.class);
+            String zd,zm;
+            if (String.valueOf(gdoitcdate).length()==1){
+                zd="0"+gdoitcdate;
+            }
+            else{
+                zd=""+gdoitcdate;
+            }
+
+            if (String.valueOf(gdoitcmonth).length()==1){
+                zm="0"+gdoitcmonth;
+            }
+            else{
+                zm=""+gdoitcmonth;
+            }
             dialintent.putExtra("year",gdoitcyear+"");
-            dialintent.putExtra("month",gdoitcmonth + "");
-            dialintent.putExtra("date",gdoitcdate+"");
+            dialintent.putExtra("month",zm + "");
+            dialintent.putExtra("date",zd+"");
             startActivityForResult(dialintent, 1001);
             return true;
         }
@@ -511,12 +543,29 @@ public class MainActivity extends ActionBarActivity {
                 inputmm="0"+inputmm;
             }
             inputrb = data.getStringExtra("inputrb");
+
+
+            String zd,zm;
+            if (String.valueOf(gdoitcdate).length()==1){
+                zd="0"+gdoitcdate;
+            }
+            else{
+                zd=""+gdoitcdate;
+            }
+
+            if (String.valueOf(gdoitcmonth).length()==1){
+                zm="0"+gdoitcmonth;
+            }
+            else{
+                zm=""+gdoitcmonth;
+            }
             int maxsz = arraydate.size();
-            arraydate.add(maxsz,gdoitcyear+""+gdoitcmonth+""+gdoitcdate);
+            arraydate.add(maxsz,gdoitcyear+""+zm+""+zd);
             arraytime.add(maxsz,inputrb+""+inputhh+""+inputmm);
             arraysc.add(maxsz, inputsc+"");
 
             gdadapter.notifyDataSetChanged();
+            lsadapter.notifyDataSetChanged();
         }
     }
 }

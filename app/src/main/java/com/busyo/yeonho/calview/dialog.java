@@ -39,6 +39,7 @@ public class dialog extends ActionBarActivity {
         dlsc= String.valueOf(edsc.getText());
         dlhh= String.valueOf(edhh.getText());
         dlmm= String.valueOf(edmm.getText());
+
         btsave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

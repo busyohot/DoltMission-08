@@ -11,13 +11,7 @@
     android:orientation="vertical"
     android:background="#ffffff">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/maxdate"
-        android:textSize="20dp"
-        android:layout_marginLeft="15dp"
-        android:textStyle="bold" />
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -79,7 +73,13 @@
         android:horizontalSpacing="2dp"
         android:padding="2dp"
         />
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/maxdate"
+        android:textSize="20dp"
+        android:layout_marginLeft="15dp"
+        android:textStyle="bold" />
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
