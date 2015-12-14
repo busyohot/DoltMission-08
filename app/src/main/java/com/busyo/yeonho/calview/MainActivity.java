@@ -471,7 +471,10 @@ public class MainActivity extends ActionBarActivity {
             listd(position);
             if (llistsc == null){
                 TextView ltextView = new TextView(lcontext);
-                ltextView.setVisibility(View.GONE);
+                //ltextView.setVisibility(View.GONE);
+
+                ltextView.setHeight(0);
+
                 return ltextView;
             }
             else{

@@ -57,6 +57,10 @@ public class dialog extends ActionBarActivity {
                 {
                     Toast.makeText(getApplicationContext(),"'시'를 입력하세요.",Toast.LENGTH_SHORT).show();
                 }
+                else if(String.valueOf(edhh.getText()).length()>2)
+                {
+                    Toast.makeText(getApplicationContext(),"입력한 '시'를 확인하세요.",Toast.LENGTH_SHORT).show();
+                }
                 else if(Integer.parseInt(edhh.getText().toString())>12)
                 {
                     Toast.makeText(getApplicationContext(),"입력한 '시'를 확인하세요.",Toast.LENGTH_SHORT).show();
@@ -65,6 +69,10 @@ public class dialog extends ActionBarActivity {
                 else if(String.valueOf(edmm.getText()).length()==0)
                 {
                     Toast.makeText(getApplicationContext(),"'분'을 입력하세요.",Toast.LENGTH_SHORT).show();
+                }
+                else if(String.valueOf(edmm.getText()).length()>2)
+                {
+                    Toast.makeText(getApplicationContext(),"입력한 '분'을 확인하세요.",Toast.LENGTH_SHORT).show();
                 }
                 else if(Integer.parseInt(edmm.getText().toString())>60)
                 {
